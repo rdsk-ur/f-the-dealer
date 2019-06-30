@@ -11,7 +11,8 @@ public class Game {
         Deck deck = new Deck(13, 4);
         new Game(new Player[]{
                 new HighestProbabilityPlayer(deck),
-                new HighestExpectationValuePlayer(deck)
+                new HighestExpectationValuePlayer(deck),
+                new RandomPlayer(deck)
         }, deck).generateDataset("simulations", 1_000_000, 10 * 60);
     }
 
