@@ -23,3 +23,6 @@ The simulation focuses on comparing different strategies by counting how often o
 The main class is Game, it contains the game's logic and keeps track of the scores with a Score object.
 The Player class is an abstract super class and defines which actions a player must have implemented (firstGuess, secondGuess, reset).
 The Deck class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
+
+## Output and generating game data
+The current purpose of the main method in the Game class is a call to generateDataset() which runs lots of rounds and saves them in a .csv file for each player.
