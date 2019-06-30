@@ -157,6 +157,13 @@ public class Game {
         json.append(deck.getColors());
         json.append(",\"numbers\":");
         json.append(deck.differentNumbers());
+        json.append("},");
+        json.append("\"constants\":{\"first\":");
+        json.append(Constants.FIRST);
+        json.append(",\"second_right\":");
+        json.append(Constants.SECOND_RIGHT);
+        json.append(",\"second_wrong\":");
+        json.append(Constants.SECOND_WRONG);
         json.append("}");
 
         //extensible
