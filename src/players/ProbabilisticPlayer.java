@@ -1,29 +1,44 @@
+package players;
+
+import game.Deck;
+import game.Player;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * Calculates a value for each card (e.g. the probability to be correct when choosing it) and chooses the one with the biggest value.
  */
 public abstract class ProbabilisticPlayer extends Player {
+    Random r;
 
     /**
      * @param deck The shared deck in the game
      */
     public ProbabilisticPlayer(Deck deck) {
         super(deck);
+        r = new Random();
     }
 
     @Override
     public int firstGuess() {
-        double maxValue = -1;
-        int maxCard = -1;
-        double value = 0;
+        ArrayList<Integer> out = new ArrayList<>();
+        double max = Integer.MIN_VALUE;
+        double value;
         for (int i = 0; i < deck.differentNumbers(); i++) {
-            value = valueCard(i);
-            if (value > maxValue) {
-                maxValue = value;
-                maxCard = i;
+            value = this.valueCard(i);
+            if (value == max) {
+                out.add(i);
+            } else if (value > max) {
+                max = value;
+                out = new ArrayList<>();
+                out.add(i);
             }
         }
-        //System.out.println("First guess: " + maxCard);
-        return maxCard;
+        if (!out.isEmpty())
+            return out.get(r.nextInt(out.size()));
+        else
+            throw new RuntimeException("This shouldn't have happened...");
     }
 
     @Override
@@ -45,7 +60,6 @@ public abstract class ProbabilisticPlayer extends Player {
                 }
             }
         }
-        //System.out.println("Second guess: " + maxCard);
         return maxCard;
     }
 

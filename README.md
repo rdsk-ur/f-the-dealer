@@ -1,6 +1,6 @@
 # F The Dealer Simulation
 
-## The Game
+## The game.Game
 F the Dealer is a drinking game with poker playing cards. One player starts as the dealer and holds the deck of cards.
 The player next to him now has to guess, what number lies on top of the stack.
 If he's correct, good, if not, he gets a second chance:
@@ -20,9 +20,9 @@ But because that's not a doable strategy in real life, there is the question whe
 The simulation focuses on comparing different strategies by counting how often one guesses right/wrong or has to drink.
 
 ## Insight in the simulation
-The main class is Game, it contains the game's logic and keeps track of the scores with a Score object.
-The Player class is an abstract super class and defines which actions a player must have implemented (firstGuess, secondGuess, reset).
-The Deck class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
+The main class is game.Game, it contains the game's logic and keeps track of the scores with a Score object.
+The game.Player class is an abstract super class and defines which actions a player must have implemented (firstGuess, secondGuess, reset).
+The game.Deck class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
 
 ## Output and generating game data
-The current purpose of the main method in the Game class is a call to generateDataset() which runs lots of rounds and saves them in a .csv file for each player.
+The current purpose of the main method in the game.Game class is a call to generateDataset() which runs lots of rounds and saves them in a .csv file for each player.

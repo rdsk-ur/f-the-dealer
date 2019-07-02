@@ -1,3 +1,5 @@
+package game;
+
 import java.util.Random;
 
 public class Deck {
@@ -45,7 +47,7 @@ public class Deck {
      */
     public int getRandom() {
         if (!hasNext())
-            throw new RuntimeException("Deck is empty");
+            throw new RuntimeException("game.Deck is empty");
         int pick = r.nextInt(size);
         int index = 0;
         while (pick >= 0) {

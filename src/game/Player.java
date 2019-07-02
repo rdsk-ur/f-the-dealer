@@ -1,3 +1,5 @@
+package game;
+
 public abstract class Player {
     protected Deck deck;
 

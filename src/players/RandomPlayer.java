@@ -1,3 +1,8 @@
+package players;
+
+import game.Deck;
+import game.Player;
+
 import java.util.Random;
 
 /**

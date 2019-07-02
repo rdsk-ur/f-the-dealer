@@ -1,3 +1,7 @@
+package players;
+
+import game.Deck;
+
 public class HighestProbabilityPlayer extends ProbabilisticPlayer {
     /**
      * @param deck The shared deck in the game
