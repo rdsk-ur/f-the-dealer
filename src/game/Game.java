@@ -1,3 +1,10 @@
+package game;
+
+import players.HighestExpectationValuePlayer;
+import players.HighestProbabilityOnFirstTryPlayer;
+import players.HighestProbabilityPlayer;
+import players.RandomPlayer;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,12 +15,21 @@ import java.util.Random;
 
 public class Game {
     public static void main(String[] args) {
+        /*Deck deck = new Deck(13, 4);
+        new Game(new Player[]{
+                new HighestProbabilityOnFirstTryPlayer(deck),
+                new HighestExpectationValuePlayer(deck),
+                new HighestProbabilityPlayer(deck),
+                new RandomPlayer(deck)
+        }, deck).generateDataset("simulations", 100_000, 10 * 60);*/
+
         Deck deck = new Deck(13, 4);
         new Game(new Player[]{
+                new RandomPlayer(deck),
+                new HighestProbabilityOnFirstTryPlayer(deck),
                 new HighestProbabilityPlayer(deck),
-                new HighestExpectationValuePlayer(deck),
-                new RandomPlayer(deck)
-        }, deck).generateDataset("simulations", 1_000_000, 10 * 60);
+                new HighestExpectationValuePlayer(deck)
+        }, deck).runAndResetNTimes(10000);
     }
 
     private Player[] players;
@@ -34,20 +50,17 @@ public class Game {
             int wrongsForDealerChange = 2;
             while (deck.hasNext() && wrongsForDealerChange > 0) {
                 int correct = deck.getRandom();
-                //System.out.println("\nDrawn: " + correct);
                 int guess = players[currentGuesser].firstGuess();
                 if (guess == correct) {
                     scores.newChugs(currentGuesser, currentDealer, Constants.FIRST);
                     scores.guessedRight(currentGuesser);
                     wrongsForDealerChange = 2;
-                    //System.out.println("Correct! First");
                 } else {
                     guess = players[currentGuesser].secondGuess(guess, correct > guess);
                     if (guess == correct) {
                         scores.newChugs(currentGuesser, currentDealer, Constants.SECOND_RIGHT);
                         scores.guessedRight(currentGuesser);
                         wrongsForDealerChange = 2;
-                        //System.out.println("Correct! Second");
                     } else {
                         scores.newChugs(currentDealer, currentGuesser, Constants.SECOND_WRONG);
                         scores.guessedWrong(currentGuesser);
