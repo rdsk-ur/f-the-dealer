@@ -1,6 +1,6 @@
 # F The Dealer Simulation
 
-## The game.Game
+## The Game
 F the Dealer is a drinking game with poker playing cards. One player starts as the dealer and holds the deck of cards.
 The player next to him now has to guess, what number lies on top of the stack.
 If he's correct, good, if not, he gets a second chance:
@@ -21,7 +21,7 @@ The simulation focuses on comparing different strategies by counting how often o
 
 ## Insight in the simulation
 The main class is `Game`, it contains the game's logic and keeps track of the scores with a Score object.
-The `Player` class is an abstract super class and defines which actions a player must have implemented, see Player type tree below
+The `Player` class is an abstract super class and defines which actions a player must have implemented, see Player type tree below.
 The `Deck` class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
 
 ## Running
