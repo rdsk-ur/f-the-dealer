@@ -32,9 +32,10 @@ The current purpose of the main method in the `Game` class is a call to `generat
 
 ## Player type tree
 There are several playertypes (strategies) that can be chosen for the simulation. (Feel free to add other types!) Italic means abstract class.
-***Player***: General Player class. Defines header of `firstGuess()` and `secondGuess()`.
-- ***ProbabilisticPlayer***: Can calculate various probabilities. Mean't to be expanded. Returns at first guess the card with the highest value given by `value()` function.
-  - ***HighestProbabilityPlayer***: Values the probability of success for each card, considering the first and second guess.
-  - ***HighestProbabilityOnFirstTryPlayer***: Values the probability of success for each card, considering only the first guess.
-  - ***HighestExpectationValuePlayer***: Values the expectation value for each card, considering the first and second guess.
-- ***RandomPlayer***: Always guesses a random (but still available) number. Good for comparing to a new class for testing.
+
+- ***Player***: General Player class. Defines header of `firstGuess()` and `secondGuess()`.
+  - ***ProbabilisticPlayer***: Can calculate various probabilities. Mean't to be expanded. Returns at first guess the card with the highest value given by `value()` function.
+    - ***HighestProbabilityPlayer***: Values the probability of success for each card, considering the first and second guess.
+    - ***HighestProbabilityOnFirstTryPlayer***: Values the probability of success for each card, considering only the first guess.
+    - ***HighestExpectationValuePlayer***: Values the expectation value for each card, considering the first and second guess.
+  - ***RandomPlayer***: Always guesses a random (but still available) number. Good for comparing to a new class for testing.
