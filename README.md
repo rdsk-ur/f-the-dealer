@@ -20,9 +20,21 @@ But because that's not a doable strategy in real life, there is the question whe
 The simulation focuses on comparing different strategies by counting how often one guesses right/wrong or has to drink.
 
 ## Insight in the simulation
-The main class is game.Game, it contains the game's logic and keeps track of the scores with a Score object.
-The game.Player class is an abstract super class and defines which actions a player must have implemented (firstGuess, secondGuess, reset).
-The game.Deck class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
+The main class is `Game`, it contains the game's logic and keeps track of the scores with a Score object.
+The `Player` class is an abstract super class and defines which actions a player must have implemented, see Player type tree below
+The `Deck` class holds a representation (optimized) of a deck of cards. A player can post requests to it (e.g. how many cards there are etc.).
+
+## Running
+For a single run one can call `run()` in the `Game` class. To do multiple runs and comparing how good the current chosen Players are, one can use `runAndResetNTimes()`. Also good for debugging to see if a player is about as good as expected.
 
 ## Output and generating game data
-The current purpose of the main method in the game.Game class is a call to generateDataset() which runs lots of rounds and saves them in a .csv file for each player.
+The current purpose of the main method in the `Game` class is a call to `generateDataset()` which runs lots of rounds and saves them in a .csv file for each player.
+
+## Player type tree
+There are several playertypes (strategies) that can be chosen for the simulation. (Feel free to add other types!) Italic means abstract class.
+***Player***: General Player class. Defines header of `firstGuess()` and `secondGuess()`.
+- ***ProbabilisticPlayer***: Can calculate various probabilities. Mean't to be expanded. Returns at first guess the card with the highest value given by `value()` function.
+  - ***HighestProbabilityPlayer***: Values the probability of success for each card, considering the first and second guess.
+  - ***HighestProbabilityOnFirstTryPlayer***: Values the probability of success for each card, considering only the first guess.
+  - ***HighestExpectationValuePlayer***: Values the expectation value for each card, considering the first and second guess.
+- ***RandomPlayer***: Always guesses a random (but still available) number. Good for comparing to a new class for testing.
